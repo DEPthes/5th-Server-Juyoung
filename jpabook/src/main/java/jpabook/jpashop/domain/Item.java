@@ -16,6 +16,17 @@ public class Item {
     private int price;
     private int stockQuantity;
 
+    public void addStock(int quantity){
+        this.stockQuantity+=quantity;
+    }
+    public void removeStock(int quantity){
+        int restStock=this.stockQuantity-quantity;
+        if(restStock<0){
+            throw new IllegalStateException("재고 부족");
+        }
+        this.stockQuantity=restStock;
+    }
+
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
     public Long getId() {

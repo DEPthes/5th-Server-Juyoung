@@ -14,6 +14,7 @@ public class Category {
 
     private String name;
 
+    //계층 구조
     @ManyToOne
     @JoinColumn(name = "PARENT_ID")
     private Category parent;

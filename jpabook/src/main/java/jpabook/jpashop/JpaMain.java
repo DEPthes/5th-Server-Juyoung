@@ -24,7 +24,7 @@ public class JpaMain{
 //            order.addOrderItem(new OrderItem());
 
             OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
+            order.addOrderItem(orderItem);
 
             em.persist(orderItem);
 
