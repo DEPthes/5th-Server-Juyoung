@@ -60,7 +60,7 @@ public class ItemApiController {
     }
 
     @Data
-    public class CreateItemRequest{
+    static class CreateItemRequest{
         private String name;
         private int price;
         private int stockQuantity;
