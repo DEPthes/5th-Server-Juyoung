@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 가입</title>
+</head>
+<body>
+<h1>회원가입</h1>
+
+<form th:action="@{/members/new}" th:object="${memberForm}" method="post">
+    <div>
+        <label th:for="name">이름</label>
+        <input type="text" th:field="*{name}" placeholder="이름을 입력하세요">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red"></p>
+    </div>
+
+    <div>
+        <label th:for="email">이메일</label>
+        <input type="text" th:field="*{email}" placeholder="example@email.com">
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red"></p>
+    </div>
+
+    <div>
+        <label th:for="password">비밀번호</label>
+        <input type="password" th:field="*{password}" placeholder="비밀번호를 입력하세요">
+        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" style="color:red"></p>
+    </div>
+
+    <div>
+        <label th:for="city">도시</label>
+        <input type="text" th:field="*{city}" placeholder="도시">
+    </div>
+    <div>
+        <label th:for="street">거리</label>
+        <input type="text" th:field="*{street}" placeholder="거리">
+    </div>
+    <div>
+        <label th:for="zipcode">우편번호</label>
+        <input type="text" th:field="*{zipcode}" placeholder="우편번호">
+    </div>
+    <button type="submit">가입하기</button>
+</form>
+</body>
+</html>

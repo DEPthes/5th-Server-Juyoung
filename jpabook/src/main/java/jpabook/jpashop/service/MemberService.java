@@ -3,6 +3,7 @@ package jpabook.jpashop.service;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jpabook.jpashop.domain.Member;
+import jpabook.jpashop.repository.MemberDataRepository;
 import jpabook.jpashop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.List;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final MemberDataRepository memberDataRepository;
 
     @Transactional
     public Long join(@Valid Member member) {
@@ -35,5 +37,12 @@ public class MemberService {
     }
     public Member findOne(Long memberId){
         return memberRepository.findById(memberId);
+    }
+
+    public Member login(String email, String password){
+        return memberDataRepository.findByEmail(email).stream()
+                .filter(m->m.getPassword().equals(password))
+                .findFirst()
+                .orElse(null);
     }
 }
